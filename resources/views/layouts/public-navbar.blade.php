@@ -16,10 +16,10 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Chi siamo') }}</a>
+                    <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Che facciamo') }}</a>
+                    <a class="nav-link" href="#">{{ __('Chi siamo') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('Contatti') }}</a>

@@ -11,10 +11,14 @@
 |
 */
 
+// homepage pubblica
 Route::get('/','HomeController@index')->name('public.home');
+//pagina pubblica visualizzazione post
+Route::get('/blog','PostController@index')->name('blog');
 
 Auth::routes();
-
-Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
-
-Route::resource('/admin/posts','Admin\PostController')->middleware('auth');
+//pagine relative alla gestione dei post
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('/posts','PostController');
+});
