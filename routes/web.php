@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/','HomeController@index')->name('public.home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'Admin\HomeController@index')->name('admin.home')->middleware('auth');
+
+Route::resource('/admin/posts','Admin\PostController')->middleware('auth');
