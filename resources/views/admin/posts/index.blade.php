@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>Gestisci i tuoi post</h1>
+                <a class="btn btn-info float-right" href="{{ route('admin.posts.create') }}">Crea nuovo post</a>
             </div>
             <table class="table table-hover">
               <thead>
@@ -23,7 +24,7 @@
                         <td>{{ $post->slug }}</td>
                         <td>{{ $post->author }}</td>
                         <td>
-                            <a class="btn btn-info" href="#">Visualizza</a>
+                            <a class="btn btn-info" href="{{ route('admin.posts.show', ['post' => $post->id]) }}">Visualizza</a>
                         </td>
                       </tr>
                   @empty

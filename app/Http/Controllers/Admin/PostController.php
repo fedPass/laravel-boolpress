@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +37,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dati = $request->all();
+        $post = new Post();
+        $post->fill($dati);
+        //creo lo slug
+        $slug_originale = Str::slug($dati['title']);
+        //lo salvo in una variabile
+        $slug = $slug_originale;
+        //verifico se esiste già uno Slug uguale
+        $check_slug = Post::where('slug',$slug)->first();
+        //se esiste già avrà "indice" 1
+        $slug_trovati = 1;
+        // se hai trovato uno slug uguale
+        while (!empty($check_slug)) {
+            //aggiungo allo slug originale il numero contatore
+            $slug = $slug_originale . '_' . $slug_trovati;
+            //verifico se esiste lo slug con questo "indice"
+            $check_slug = Post::where('slug',$slug)->first();
+            //incremento indice da unire allo slug
+            $slug_trovati++;
+        }
+        $post->slug = $slug;
+        $post->save();
+        return redirect()->route('admin.posts.index');
+
     }
 
     /**
@@ -48,7 +71,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.show',['post'-> $post]);
     }
 
     /**

@@ -16,7 +16,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                    <a class="nav-link {{ Route::currentRouteName() == 'blog' ? 'active' : '' }}" href="{{ route('blog') }}">{{ __('Blog') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('Chi siamo') }}</a>

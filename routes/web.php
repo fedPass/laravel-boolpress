@@ -15,8 +15,12 @@
 Route::get('/','HomeController@index')->name('public.home');
 //pagina pubblica visualizzazione post
 Route::get('/blog','PostController@index')->name('blog');
+//ogni slug ha la sua pagina
+Route::get('/blog/{slug}','PostController@show')->name('blog.show');
 
-Auth::routes();
+//impedisce la registrazione a chi non è loggato
+Auth::routes(['register'=>false]);
+
 //pagine relative alla gestione dei post
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
