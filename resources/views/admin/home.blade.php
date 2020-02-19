@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    BACHECA AMMINISTRAZIONE
                 </div>
             </div>
         </div>

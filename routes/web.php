@@ -18,7 +18,7 @@ Route::get('/blog','PostController@index')->name('blog');
 //ogni slug ha la sua pagina
 Route::get('/blog/{slug}','PostController@show')->name('blog.show');
 
-//impedisce la registrazione a chi non è loggato
+//impedisce la registrazione, solo admin può aggiungere users tramite CRUD
 Auth::routes(['register'=>false]);
 
 //pagine relative alla gestione dei post

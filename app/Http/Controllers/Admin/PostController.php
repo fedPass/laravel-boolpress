@@ -46,7 +46,7 @@ class PostController extends Controller
         $slug = $slug_originale;
         //verifico se esiste già uno Slug uguale
         $check_slug = Post::where('slug',$slug)->first();
-        //se esiste già avrà "indice" 1
+        //se esiste dovrò agg "indice" 1
         $slug_trovati = 1;
         // se hai trovato uno slug uguale
         while (!empty($check_slug)) {
@@ -71,7 +71,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.posts.show',['post'-> $post]);
+        return view('admin.posts.show',['post'=> $post]);
     }
 
     /**

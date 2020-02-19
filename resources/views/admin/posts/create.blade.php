@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>Crea nuovo post</h1>
-                <form class="" action="index.html" method="post">
+                <form action="{{ route('admin.posts.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                       <label for="title">Titolo</label>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                       <label for="content">Testo post</label>
-                      <textarea type="text" class="form-control" id="content" placeholder="Testo del post" name="content">
+                      <textarea type="text" class="form-control" id="content" placeholder="Testo del post" name="content"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Crea</button>
                 </form>

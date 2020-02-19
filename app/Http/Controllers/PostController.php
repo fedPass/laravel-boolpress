@@ -14,7 +14,7 @@ class PostController extends Controller
     }
 
     public function show($slug)
-    {
+    {   //uso first() per prendere un solo record già bello impacchettato
         $post = Post::where('slug', $slug)->first();
         return view('single-post',['post'=> $post]);
     }
