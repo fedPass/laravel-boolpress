@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -51,7 +52,7 @@ class PostController extends Controller
         // se hai trovato uno slug uguale
         while (!empty($check_slug)) {
             //aggiungo allo slug originale il numero contatore
-            $slug = $slug_originale . '_' . $slug_trovati;
+            $slug = $slug_originale . '-' . $slug_trovati;
             //verifico se esiste lo slug con questo "indice"
             $check_slug = Post::where('slug',$slug)->first();
             //incremento indice da unire allo slug
@@ -60,7 +61,6 @@ class PostController extends Controller
         $post->slug = $slug;
         $post->save();
         return redirect()->route('admin.posts.index');
-
     }
 
     /**
