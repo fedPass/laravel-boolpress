@@ -84,7 +84,8 @@ class PostController extends Controller
             //carico la nuova Immagine
             $cover_img = $dati['cover_img_update'];
             $cover_img_path = Storage::put('uploads', $cover_img);
-            $dati['cover_img'] = $cover_img_path;
+            // $dati['cover_img'] = $cover_img_path;
+            $post->cover_img = $cover_img_path;
         }
         //aggiorno i dati
         $post->update($dati);
@@ -96,7 +97,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        //cancello img dallo Storage quando cancello il post
+        //cancello img dallo Storage quando cancello
         $img_post = $post->cover_img;
         Storage::delete($img_post);
         return redirect()->route('admin.posts.index');
