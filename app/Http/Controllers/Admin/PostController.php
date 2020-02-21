@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -25,6 +26,14 @@ class PostController extends Controller
         $dati = $request->all();
         $post = new Post();
         $post->fill($dati);
+
+        //mi occupo dell'Immagine
+        if(!empty($dati['cover_img'])) {
+            $cover_img = $dati['cover_img'];
+            $cover_img_path = Storage::put('uploads', $cover_img);
+            $post->cover_img = $cover_img_path;
+        }
+
         //creo lo slug
         $slug_originale = Str::slug($dati['title']);
         //lo salvo in una variabile
