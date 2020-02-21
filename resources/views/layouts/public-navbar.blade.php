@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#">{{ __('Chi siamo') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Contatti') }}</a>
+                    <a class="nav-link {{ Route::currentRouteName() == 'contatti' ? 'active' : '' }}" href="{{ route('contatti') }}">{{ __('Contatti') }}</a>
                 </li>
                 @auth
                     {{-- solo se solo loggata mostro nome e menu per sloggarsi --}}

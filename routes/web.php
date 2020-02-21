@@ -17,6 +17,10 @@ Route::get('/','HomeController@index')->name('public.home');
 Route::get('/blog','PostController@index')->name('blog');
 //ogni slug ha la sua pagina
 Route::get('/blog/{slug}','PostController@show')->name('blog.show');
+//pagina con form contatti
+Route::get('/contatti', 'HomeController@contatti')->name('contatti');
+//pagina che riceve i dati del form contatti
+Route::put('/contatti', 'HomeController@contattiStore')->name('contatti.store');
 
 //impedisce la registrazione, solo admin può aggiungere users (eventualmente tramite CRUD su UserController)
 Auth::routes(['register'=>false]);
