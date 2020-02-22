@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Lead;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewLead;
+use App\Mail\UserConfirmation;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,9 @@ class HomeController extends Controller
         $new_message->save();
         //invio mail all'admin passandogli dati di $new_message
         Mail::to('admin@sito.com')->send(new NewLead($new_message));
+        //invio mail con copia messaggio all'user
+        Mail::to($new_message->email)->send(new UserConfirmation($new_message));
+
         return redirect()->route('thanks');
     }
 
