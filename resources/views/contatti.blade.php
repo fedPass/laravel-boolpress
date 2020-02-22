@@ -16,8 +16,8 @@
                       <input type="text" class="form-control" id="email" placeholder="Email" name="email">
                     </div>
                     <div class="form-group">
-                      <label for="mess_object">Oggetto</label>
-                      <input type="text" class="form-control" id="mess_object" placeholder="Oggetto del messaggio" name="mess_object">
+                      <label for="subject">Oggetto</label>
+                      <input type="text" class="form-control" id="subject" placeholder="Oggetto del messaggio" name="subject">
                     </div>
                     <div class="form-group">
                       <label for="message">Testo messaggio</label>

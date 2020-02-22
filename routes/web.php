@@ -20,7 +20,9 @@ Route::get('/blog/{slug}','PostController@show')->name('blog.show');
 //pagina con form contatti
 Route::get('/contatti', 'HomeController@contatti')->name('contatti');
 //pagina che riceve i dati del form contatti
-Route::put('/contatti', 'HomeController@contattiStore')->name('contatti.store');
+Route::post('/contatti', 'HomeController@contattiStore')->name('contatti.store');
+//pagina di conferma invio messaggio da form contatti
+Route::get('/thanks','HomeController@thanks')->name('thanks');
 
 //impedisce la registrazione, solo admin può aggiungere users (eventualmente tramite CRUD su UserController)
 Auth::routes(['register'=>false]);
