@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lead;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewLead;
 
 class HomeController extends Controller
 {
@@ -20,6 +22,8 @@ class HomeController extends Controller
         $new_message = new Lead();
         $new_message->fill($dati);
         $new_message->save();
+        //invio mail all'admin passandogli dati di $new_message
+        Mail::to('admin@sito.com')->send(new NewLead($new_message));
         return redirect()->route('thanks');
     }
 
