@@ -8,6 +8,7 @@
                 <p>{{ $post->content }}</p>
                 <p>Autore: {{ $post->author }}</p>
                 <p>Slug: {{ $post->slug }}</p>
+                <p>Categoria: {{ $post->category ? $post->category->name : 'Non ancora indicata' }}</p>
                 <p>Creato il: {{ $post->created_at }}</p>
                 <p>Modificato il: {{ $post->updated_at }}</p>
                 <a class="btn btn-info" href="{{ route('admin.posts.index') }}">Torna alla lista dei posts</a>
