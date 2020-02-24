@@ -18,6 +18,23 @@
                       <label for="content">Testo post</label>
                       <textarea type="text" class="form-control" id="content" placeholder="Testo del post" name="content" rows="8"></textarea>
                     </div>
+                    {{-- se ho le categorie in db nella tab categories crea select  --}}
+                    {{-- @if(!empty($categories)) --}}
+                    @if($categories->count() > 0)
+                        <div class="form-group">
+                            {{-- la select ha il name della colonna per sfruttare il fill() --}}
+                          <select name="category_id">
+                              <option value="">Seleziona la categoria</option>
+                              @foreach ($categories as $category)
+                                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                              @endforeach
+                          </select>
+                        </div>
+                    @else
+                        {{-- se non ho ancora categoria salvate in db da associare aggiungi la prima --}}
+                        <a href="#">Aggiungi la prima categoria</a>
+                    @endif
+
                     <div class="form-group">
                       <label for="cover_img">Immagine di copertina</label>
                       <input type="file" class="form-control-file" id="cover_img" name="cover_img">

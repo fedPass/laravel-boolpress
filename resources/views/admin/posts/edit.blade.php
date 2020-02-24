@@ -19,6 +19,22 @@
                       <label for="content">Testo post</label>
                       <textarea type="text" class="form-control" id="content" placeholder="Testo del post" name="content" rows="8">{{ $post->content }}</textarea>
                     </div>
+                    @if($categories->count() > 0)
+                        <div class="form-group">
+                          <select name="category_id">
+                              <option value="">Seleziona la categoria</option>
+                              @foreach ($categories as $category)
+                                  {{-- se questo post ha la categoria mettila come selected --}}
+                                  <option value="{{ $category->id }}" {{ ($post->category && ($post->category->id == $category->id)) ? 'selected' : '' }}>
+                                      {{ $category->name }}
+                                  </option>
+                              @endforeach
+                          </select>
+                        </div>
+                    @else
+                        {{-- se non ho ancora categoria salvate in db da associare aggiungi la prima --}}
+                        <a href="#">Aggiungi la prima categoria</a>
+                    @endif
                     <div class="form-group">
                       <label for="cover_img_update">Immagine di copertina</label>
                       {{-- se c'è l'immagine già, la visualizzo --}}

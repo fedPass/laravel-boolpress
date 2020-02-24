@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -18,7 +19,9 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.posts.create');
+        //passo alla view le categorie per creare option della select dei generi
+        $categories = Category::all();
+        return view('admin.posts.create', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -66,7 +69,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit',['post'=> $post]);
+        //passo alla view le categorie per creare option della select dei generi
+        $categories = Category::all();
+        return view('admin.posts.edit',['post'=> $post, 'categories' => $categories]);
     }
 
 
