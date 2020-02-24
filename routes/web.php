@@ -23,6 +23,8 @@ Route::get('/contatti', 'HomeController@contatti')->name('contatti');
 Route::post('/contatti', 'HomeController@contattiStore')->name('contatti.store');
 //pagina di conferma invio messaggio da form contatti
 Route::get('/thanks','HomeController@thanks')->name('thanks');
+//ogni categoria ha la sua pagina
+Route::get('/blog/category/{slug}','PostController@showCategory')->name('blog.category');
 
 //impedisce la registrazione, solo admin può aggiungere users (eventualmente tramite CRUD su UserController)
 Auth::routes(['register'=>false]);

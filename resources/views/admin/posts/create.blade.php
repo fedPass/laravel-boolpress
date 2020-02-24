@@ -23,7 +23,7 @@
                     @if($categories->count() > 0)
                         <div class="form-group">
                             {{-- la select ha il name della colonna per sfruttare il fill() --}}
-                          <select name="category_id">
+                          <select name="category_id" required>
                               <option value="">Seleziona la categoria</option>
                               @foreach ($categories as $category)
                                   <option value="{{ $category->id }}">{{ $category->name }}</option>

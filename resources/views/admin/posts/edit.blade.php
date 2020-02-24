@@ -21,7 +21,7 @@
                     </div>
                     @if($categories->count() > 0)
                         <div class="form-group">
-                          <select name="category_id">
+                          <select name="category_id" required>
                               <option value="">Seleziona la categoria</option>
                               @foreach ($categories as $category)
                                   {{-- se questo post ha la categoria mettila come selected --}}
