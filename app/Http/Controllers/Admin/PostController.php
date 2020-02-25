@@ -29,6 +29,14 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        //la funzione validate() verifica le info che le arrivano dalla request
+        $request->validate([
+            'title' => 'required|max:255',
+            'author' => 'required|max:255',
+            'content' => 'required',
+            'cover_image_file' => 'image'
+        ]);
+
         $dati = $request->all();
         $post = new Post();
         $post->fill($dati);
@@ -91,6 +99,13 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        //la funzione validate() verifica le info che le arrivano dalla request
+        $request->validate([
+            'title' => 'required|max:255',
+            'author' => 'required|max:255',
+            'content' => 'required',
+            'cover_image_file' => 'image'
+        ]);
         //recupero i dati del form
         $dati = $request->all();
         //gestisco immmagine da aggiornare
