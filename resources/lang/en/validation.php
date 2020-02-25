@@ -130,8 +130,15 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'title' => [
+            'required' => 'Devi inserire un titolo per il post',
+        ],
+        'author' => [
+            'required' => 'Devi inserire un autore per il post',
+        ],
+        'content' => [
+            'required' => 'Devi inserire un testo per il post',
+            'max' => 'Puoi inserire al massimo 255 parole',
         ],
     ],
 
