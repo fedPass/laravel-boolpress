@@ -36,6 +36,19 @@
                         <a href="#">Aggiungi la prima categoria</a>
                     @endif
                     <div class="form-group">
+                        <span>Seleziona tags per questo post:</span>
+                        @foreach ($tags as $tag)
+                            <label for="tag_{{$tag->id}}">
+                                {{-- come name alla checkbox mettiamo un array visto che possiamo selezionare più voci --}}
+                                {{-- usiamo come value tag_id perchè è universale, tag->name potrebbe cambiare con la lingua per es --}}
+                                <input id="tag_{{$tag->id}}" type="checkbox" name="tag_id[]" value="{{ $tag->id }}"
+                                {{-- se il post conntiene già dei tag segnali come checked --}}
+                                {{ ($post->tags)->contains($tag) ? 'checked' : ''}}>
+                                {{ $tag->name }}
+                            </label>
+                        @endforeach
+                    </div>
+                    <div class="form-group">
                       <label for="cover_img_update">Immagine di copertina</label>
                       {{-- se c'è l'immagine già, la visualizzo --}}
                       @if ($post->cover_img)

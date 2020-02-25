@@ -32,7 +32,6 @@ class PostController extends Controller
         $dati = $request->all();
         $post = new Post();
         $post->fill($dati);
-
         //mi occupo dell'Immagine
         //se ho caricato qualcosa
         if(!empty($dati['cover_img'])) {
@@ -43,7 +42,6 @@ class PostController extends Controller
             //salvo la path
             $post->cover_img = $cover_img_path;
         }
-
         //creo lo slug
         $slug_originale = Str::slug($dati['title']);
         //lo salvo in una variabile
@@ -63,8 +61,8 @@ class PostController extends Controller
         }
         $post->slug = $slug;
         //salvo il post nl db
+        //devo prima salvare il post per potergli poi assegnare i tags
         $post->save();
-
         //se ho selezionato dei tag li assegno al post
         if (!empty($dati['tag_id'])) {
             //uso sync per popolare la tabella ponte (fill si riferisce alla tabella Post)
@@ -85,7 +83,9 @@ class PostController extends Controller
     {
         //passo alla view le categorie per creare option della select dei generi
         $categories = Category::all();
-        return view('admin.posts.edit',['post'=> $post, 'categories' => $categories]);
+        //mi passo i tags per creare checkbox
+        $tags = Tag::all();
+        return view('admin.posts.edit',['post'=> $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
 
@@ -108,6 +108,12 @@ class PostController extends Controller
         }
         //aggiorno i dati
         $post->update($dati);
+        //se ho selezionato dei tag li assegno al post
+        if (!empty($dati['tag_id'])) {
+            //uso sync per popolare la tabella ponte (fill si riferisce alla tabella Post)
+            //tags() è la funzione per la relazione che ho dichiarato nel Model Post
+            $post->tags()->sync($dati['tag_id']);
+        }
         //ritorno alla lista dei post
         return redirect()->route('admin.posts.index');
     }
@@ -119,6 +125,8 @@ class PostController extends Controller
         //cancello img dallo Storage quando cancello
         $img_post = $post->cover_img;
         Storage::delete($img_post);
+        //cancello tag dal post per annullare la relazione tra le tabelle
+        $post->tags()->sync([]);
         return redirect()->route('admin.posts.index');
     }
 }
