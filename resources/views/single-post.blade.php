@@ -18,7 +18,7 @@
                     <p>Tag:
                         @foreach ($post->tags as $tag)
                             {{-- uso if ternario per togliere la virgola ad ultimo loop --}}
-                            {{ $tag->name }}{{ $loop->last ? '' : ',' }}
+                            <a href="{{ route('blog.tag', ['slug' => $tag->slug]) }}">{{ $tag->name }}{{ $loop->last ? '' : ',' }}</a>
                         @endforeach
                     </p>
                 @endif

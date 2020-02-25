@@ -25,6 +25,8 @@ Route::post('/contatti', 'HomeController@contattiStore')->name('contatti.store')
 Route::get('/thanks','HomeController@thanks')->name('thanks');
 //ogni categoria ha la sua pagina
 Route::get('/blog/category/{slug}','PostController@showCategory')->name('blog.category');
+//ogni tag ha la sua pagina
+Route::get('/blog/tag/{slug}','PostController@showTag')->name('blog.tag');
 
 //impedisce la registrazione, solo admin può aggiungere users (eventualmente tramite CRUD su UserController)
 Auth::routes(['register'=>false]);
