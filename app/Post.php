@@ -13,4 +13,9 @@ class Post extends Model
     public function category() {
         return $this->belongsTo('App\Category');
     }
+
+    //un post può avere tanti tags (lo metto al plurale infatti)
+    public function tags() {
+        return $this->belongsToMany('App\Tag');
+    }
 }

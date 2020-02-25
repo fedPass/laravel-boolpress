@@ -3,7 +3,8 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-lg-12">
-                {{-- <h1>Posts per la categoria {{ $category->name }}</h1> --}}
+                {{-- {{ dd($category)}} --}}
+                <h1>Posts per la categoria "{{ $category->name }}"</h1>
                 <ul>
                     @forelse ($posts as $post)
                         <li>

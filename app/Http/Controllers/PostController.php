@@ -28,12 +28,12 @@ class PostController extends Controller
 
     public function showCategory($slug)
     {
-        $categoria = Category::where('slug', $slug)->first();
+        $category = Category::where('slug', $slug)->first();
         //se ho post da mostrare per questa categoria mostrali
-        if(!empty($categoria)) {
+        if(!empty($category)) {
             //recupero posts con questa categoria
-            $post_category = $categoria->posts;
-            return view('single-category',['posts'=> $post_category, 'category' => $post_category]);
+            $post_category = $category->posts;
+            return view('single-category',['posts'=> $post_category, 'category' => $category]);
         } else {
             //altrimenti restituiscimi view 404
             return abort(404);
