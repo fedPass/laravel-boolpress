@@ -14,6 +14,7 @@
                       <th scope="col">Titolo</th>
                       <th scope="col">Categoria</th>
                       <th scope="col">Slug</th>
+                      <th scope="col">Tag</th>
                       <th scope="col">Autore</th>
                       <th scope="col">Azioni</th>
                     </tr>
@@ -26,6 +27,13 @@
                             {{-- uso if ternario, se non ho categoria metti - --}}
                             <td>{{ $post->category ? $post->category->name : '-' }}</td>
                             <td>{{ $post->slug }}</td>
+                            <td>
+                                @forelse ($post->tags as $tag)
+                                    {{ $tag->name }}{{ $loop->last ? '' : ',' }}
+                                @empty
+                                    -
+                                @endforelse
+                            </td>
                             <td>{{ $post->author }}</td>
                             <td>
                                 <a class="btn btn-info" href="{{ route('admin.posts.show', ['post' => $post->id]) }}">Visualizza</a>
@@ -39,7 +47,7 @@
                           </tr>
                       @empty
                           <tr>
-                              <td colspan="6">Non ci sono posts</td>
+                              <td colspan="7">Non ci sono posts</td>
                           </tr>
                       @endforelse
                   </tbody>
