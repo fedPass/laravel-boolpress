@@ -4,7 +4,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>{{ $post->title }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
                 <img src="{{ asset('storage/'. $post->cover_img) }}" alt="{{ $post->title }}">
+            </div>
+            <div class="col-lg-8 pt-4">
                 <p>{{ $post->content }}</p>
                 <p>Autore: {{ $post->author }}</p>
                 <p>Slug: {{ $post->slug }}</p>
