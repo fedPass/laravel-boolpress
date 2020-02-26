@@ -55,9 +55,9 @@
                             <label for="tag_{{$tag->id}}">
                                 {{-- come name alla checkbox mettiamo un array visto che possiamo selezionare più voci --}}
                                 {{-- usiamo come value tag_id perchè è universale, tag->name potrebbe cambiare con la lingua per es --}}
-                                <input id="tag_{{$tag->id}}" type="checkbox" name="tag_id[]" value="{{ $tag->id }}">
+                                <input id="tag_{{$tag->id}}" type="checkbox" name="tag_id[]" value="{{ $tag->id }}"
                                 {{-- se nell'array dei tags ci sono tag che avevo selezionato prima dell'errore mettili come checked --}}
-                                {{-- {{ in_array($tag->id, old('tag_id')) ? 'checked' : '' }}> --}}
+                                {{ in_array($tag->id, old('tag_id', array())) ? 'checked' : '' }}>
                                 {{ $tag->name }}
                             </label>
                         @endforeach

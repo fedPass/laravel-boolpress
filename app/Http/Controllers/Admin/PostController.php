@@ -128,6 +128,9 @@ class PostController extends Controller
             //uso sync per popolare la tabella ponte (fill si riferisce alla tabella Post)
             //tags() è la funzione per la relazione che ho dichiarato nel Model Post
             $post->tags()->sync($dati['tag_id']);
+        } else {
+            //altrimenti se non ho selezionato niente togli tutti i tag
+            $post->tags()->sync([]);
         }
         //ritorno alla lista dei post
         return redirect()->route('admin.posts.index');
@@ -141,7 +144,9 @@ class PostController extends Controller
         $img_post = $post->cover_img;
         Storage::delete($img_post);
         //cancello tag dal post per annullare la relazione tra le tabelle
-        $post->tags()->sync([]);
+        if($post->tags->isNotEmpty()) {
+            $post->tags()->sync([]);
+        }
         return redirect()->route('admin.posts.index');
     }
 }
