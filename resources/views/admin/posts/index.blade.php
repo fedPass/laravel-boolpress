@@ -36,7 +36,7 @@
                             </td>
                             <td>{{ $post->author }}</td>
                             <td>
-                                <a class="btn btn-outline-info" href="{{ route('admin.posts.show', ['post' => $post->id]) }}">Visualizza</a>
+                                <a class="btn btn-outline-info" href="{{ route('admin.posts.show', ['post' => $post->id]) }}" data-toggle="tooltip" data-placement="top" title="Visualizza">Visualizza</a>
                                 <a class="btn btn-info" href="{{ route('admin.posts.edit', ['post' => $post->id]) }}">Modifica</a>
                                 <form class="d-inline" action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post">
                                     @csrf

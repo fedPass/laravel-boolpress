@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-
-
-        <main class="py-4">
+        <header>
             @include('layouts.public-navbar')
+        </header>
+        <main class="py-4">
             @yield('content')
         </main>
     </div>

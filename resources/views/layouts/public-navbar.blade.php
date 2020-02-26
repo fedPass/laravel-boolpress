@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -16,13 +16,13 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'blog' ? 'active' : '' }}" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'blog' ? 'active' : '' }}" href="{{ route('blog') }}">{{ __('Blog') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Chi siamo') }}</a>
+                    <a class="nav-link text-white" href="#">{{ __('Chi siamo') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'contatti' ? 'active' : '' }}" href="{{ route('contatti') }}">{{ __('Contatti') }}</a>
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'contatti' ? 'active' : '' }}" href="{{ route('contatti') }}">{{ __('Contatti') }}</a>
                 </li>
                 @auth
                     {{-- solo se solo loggata mostro nome e menu per sloggarsi --}}
