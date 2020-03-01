@@ -42,7 +42,7 @@
                                     <form class="d-inline" action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-outline-danger" type="submit" title="Elimina post">
+                                        <button id="btn-delete" class="btn btn-outline-danger" type="submit" title="Elimina post">
                                         <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>

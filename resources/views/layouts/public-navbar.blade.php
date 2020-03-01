@@ -16,10 +16,10 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'blog' ? 'active' : '' }}" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'public.home' ? 'active' : '' }}" href="public.home">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">{{ __('Chi siamo') }}</a>
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'blog' ? 'active' : '' }}" href="{{ route('blog') }}">{{ __('Blog') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'contatti' ? 'active' : '' }}" href="{{ route('contatti') }}">{{ __('Contatti') }}</a>

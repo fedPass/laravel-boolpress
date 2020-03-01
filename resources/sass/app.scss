@@ -6,3 +6,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+//link navbar public
+#navbarSupportedContent .nav-link:hover,
+.nav-link.active {
+
+    font-weight: bold;
+    color: #0a3b63!important;
+}

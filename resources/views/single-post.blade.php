@@ -10,7 +10,7 @@
             <div class="col-lg-4 text-center">
                 {{-- se ho img recuperala da storage --}}
                 @if (!empty($post->cover_img))
-                    <img src="{{ asset('storage/'. $post->cover_img) }}" alt="{{ $post->title }}">
+                    <img class="card-img" src="{{ asset('storage/'. $post->cover_img) }}" alt="{{ $post->title }}">
                 @endif
             </div>
             <div class="col-lg-8 pt-4">

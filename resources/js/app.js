@@ -30,3 +30,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+var $ = require('jquery');
+$(document).ready(function(){
+    $('#btn-delete').click(function(){
+        alert('sei sicuro di voler cancellare il post?');
+    });
+});

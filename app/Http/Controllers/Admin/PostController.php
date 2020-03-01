@@ -139,7 +139,6 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        $post->delete();
         //cancello img dallo Storage quando cancello
         $img_post = $post->cover_img;
         Storage::delete($img_post);
@@ -147,6 +146,7 @@ class PostController extends Controller
         if($post->tags->isNotEmpty()) {
             $post->tags()->sync([]);
         }
+        $post->delete();
         return redirect()->route('admin.posts.index');
     }
 }
